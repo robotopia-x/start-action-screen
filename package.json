@@ -1,6 +1,6 @@
 {
   "name": "action-overlay",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "anime style VS Screen",
   "main": "index.js",
   "browserify": {
