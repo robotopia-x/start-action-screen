@@ -1,11 +1,12 @@
 'use strict'
 const html = require('choo/html')
-//const sheet = require('sheetify')
+const sf = require('sheetify')
+const css = sf('./style.css')
 
 module.exports = (nameSpace) => {
   return (state, prev, send) => {
     return html`
-    <div class="actionO_overlay" style="visibility: ${state[nameSpace].hidden ? 'hidden' : 'visible'}">
+    <div class="${css} actionO_overlay" style="visibility: ${state[nameSpace].hidden ? 'hidden' : 'visible'}">
       <div id="actionO_left" style="left: ${state[nameSpace].left.pos + '%'}">
         <div class="actionO_Image" style="background-image: url(${state[nameSpace].left.img});"></div>
         <div class="actionO_Line"></div>

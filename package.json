@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "anime style VS Screen",
   "main": "index.js",
+  "browserify": {
+    "transform": [
+      "sheetify/transform"
+    ]
+  },
   "dependencies": {
     "choo": "4.0.1",
     "sheetify": "5.1.1"
@@ -14,7 +19,7 @@
   "scripts": {
     "test": "standard",
     "lint": "standard --fix",
-    "start": "budo --live --host -P localhost showcase/index.js"
+    "start": "budo --live --host -P localhost showcase/index.js:bundle.js"
   },
   "repository": {
     "type": "git",
