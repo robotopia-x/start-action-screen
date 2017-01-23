@@ -51,6 +51,12 @@ someHtmlView = (state, prev, send) => {
 }
 ```
 
+Currently there is still a stylsheet involved. This will be replaced later. All styles are prefixed with: `actionO_` to prevent conflicts.
+
+```html
+<link href="path/to/module/style.css" rel="stylesheet">
+```
+
 # Demo
 ```bash
 npm start
