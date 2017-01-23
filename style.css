@@ -5,7 +5,6 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    background-color: #b4b4b4;
     z-index: 100;
 }
 
@@ -73,7 +72,7 @@
 }
 
 #actionO_left {
-    background-color: rgba(255,0,0,0.2);
+    background-color: rgba(255,150,150,1);
     left: 0;
 }
 
@@ -87,7 +86,7 @@
 }
 
 #actionO_right {
-    background-color: rgba(0,0,255,0.2);
+    background-color: rgba(150,150,255,1);
     right: 0;
 }
 

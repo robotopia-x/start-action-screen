@@ -12,7 +12,7 @@ const viewHtml = (nameSpace) => {
         <div class="actionO_VS" style="top: ${state[nameSpace].vs.pos + '%'}">
             <div>
                 <div>
-                    <img src=${state[nameSpace].vs.img} width="100%" alt="VS"/>
+                    <img src=${state[nameSpace].vs.img} width="${state[nameSpace].vs.scale}%" alt="VS"/>
                 </div>
             </div>
         </div>
@@ -28,8 +28,12 @@ const viewHtml = (nameSpace) => {
 
 const model = (nameSpace) => {
 
-  let DURATION_UP = 2500
-  let DURATION_FADEOUT = 200
+  const DEF_DURATION_BUILDUP = 1500
+  const DEF_DURATION_UPTIME = 1000
+  const DEF_DURATION_SLIDEOUT = 1000
+  let DURATION_BUILDUP = DEF_DURATION_BUILDUP
+  let DURATION_SLIDEOUT = DEF_DURATION_SLIDEOUT
+  let DURATION_UPTIME = DEF_DURATION_UPTIME
   let updateInterval
   let timeElapsed = 0
   const timePerUpdate = 25
@@ -56,7 +60,8 @@ const model = (nameSpace) => {
       },
       vs: {
         img: 'img/lightning.png',
-        pos: 0
+        pos: 0,
+        scale: 100
       }
     },
 
@@ -64,25 +69,36 @@ const model = (nameSpace) => {
       _setVisibility: (state, visible) => {state.hidden = !visible},
       setLeft: ( state, { img, name } ) => setSide( state, 'LEFT', img, name),
       setRight: ( state, { img, name } ) => setSide( state, 'RIGHT', img, name),
-      updatePositions: updatePositions
+      setVS: ( state, { img } ) => {
+        state.vs.img = img
+        return state
+      },
+      updatePositions: updatePositions,
+      updateSizes: updateSizes
     },
 
     effects: {
       start: start,
       dismiss: dismiss,
-      setDurations: ( state, {up, fadeOut}, send, done) => {
-        if (up > 0) DURATION_UP = up
-        if (fadeOut > 0) DURATION_FADEOUT = fadeOut
+      setDurations: ( state, {up, down, stay}, send, done) => {
+        if (up > 0) DURATION_BUILDUP = up
+        if (down > 0) DURATION_SLIDEOUT = down
+        if (stay >= 0) DURATION_UPTIME = stay
         done()
       },
       update: update
     }
   }
 
-  function updatePositions(state, {left, right, vs}) {
-    state.left.pos = left
-    state.right.pos = right
-    state.vs.pos = vs
+  function updatePositions(state, data) {
+    if (data.hasOwnProperty('left')) state.left.pos = data.left
+    if (data.hasOwnProperty('right')) state.right.pos = data.right
+    if (data.hasOwnProperty('vs')) state.vs.pos = data.vs
+    return state
+  }
+
+  function updateSizes(state, data) {
+    if (data.hasOwnProperty('vs')) state.vs.scale = data.vs
     return state
   }
 
@@ -92,13 +108,19 @@ const model = (nameSpace) => {
     let pR = right.pos
     let pM = vs.pos
 
-    if (timeElapsed < DURATION_UP) {
+    if (timeElapsed < DURATION_BUILDUP) {
       return animIn( pL, pR, pM, send)
     }
 
-    if (timeElapsed < DURATION_UP + DURATION_FADEOUT) {
-      return animOut( pL, pR, pM, send)
+    if (timeElapsed < DURATION_BUILDUP + DURATION_UPTIME) {
+      return
     }
+
+    if (timeElapsed < DURATION_BUILDUP + DURATION_UPTIME + DURATION_SLIDEOUT) {
+      smallify(vs.scale, send)
+      return slideOut( pL, pR, pM, send)
+    }
+
     send(nameSpace + ':dismiss', null, doNothing)
   }
 
@@ -109,6 +131,7 @@ const model = (nameSpace) => {
       send(nameSpace + ':update', null, doNothing)
     }, timePerUpdate)
     send(nameSpace + ':updatePositions', startPositions, doNothing)
+    send(nameSpace + ':updateSizes', {vs: 100}, doNothing)
     done()
   }
 
@@ -132,7 +155,7 @@ const model = (nameSpace) => {
   }
 
   function animIn(pL, pR, pM, send) {
-    const speed = (timePerUpdate / 25)
+    const speed = (timePerUpdate / 25) * (DEF_DURATION_BUILDUP / DURATION_BUILDUP)
     pL += speed * 15
     pR += speed * 15
     pM += speed * 20
@@ -142,8 +165,18 @@ const model = (nameSpace) => {
     send(nameSpace + ':updatePositions', {left: pL, right: pR, vs: pM}, doNothing)
   }
 
-  function animOut(pL, pR, pM, send) {
+  function slideOut(pL, pR, pM, send) {
+    const speed = (timePerUpdate / 25) * (DEF_DURATION_SLIDEOUT / DURATION_SLIDEOUT)
+    pL -= speed * 2
+    pR -= speed * 2
+    send(nameSpace + ':updatePositions', {left: pL, right: pR}, doNothing)
+  }
 
+  function smallify(vsScale, send) {
+    const speed = (timePerUpdate / 25) * (DEF_DURATION_SLIDEOUT / DURATION_SLIDEOUT)
+    vsScale -= speed * 10
+    if (vsScale < 0) vsScale = 0
+    send(nameSpace + ':updateSizes', {vs: vsScale}, doNothing)
   }
 
 }

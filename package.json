@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "choo": "4.0.1",
-    "classnames": "2.2.5",
     "sheetify": "5.1.1"
   },
   "devDependencies": {
@@ -19,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hdm-project/action-overlay.git"
+    "url": "git+https://github.com/robotopia-x/start_action_screen.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hdm-project/action-overlay/issues"
+    "url": "https://github.com/robotopia-x/start_action_screen/issues"
   },
-  "homepage": "https://github.com/hdm-project/action-overlay#readme"
+  "homepage": "https://github.com/robotopia-x/start_action_screen#readme"
 }
