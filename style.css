@@ -1,0 +1,9 @@
+.actionO_overlay {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: #3a33d1;
+}
