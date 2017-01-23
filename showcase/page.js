@@ -1,3 +1,4 @@
+'use strict'
 const html = require('choo/html')
 const namespace = 'overlay'
 const overlayView = require('../index')(namespace).view

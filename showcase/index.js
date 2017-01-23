@@ -1,3 +1,4 @@
+'use strict'
 const choo = require('choo')
 const overlay = require('../index')('overlay')
 
