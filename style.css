@@ -9,33 +9,13 @@
     z-index: 100;
 }
 
-#actionO_left,
-#actionO_right {
-    width: 50%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    top: 0;
-    z-index: 101;
-}
-
 .actionO_Line {
     height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 102;
     overflow: hidden;
-}
-
-.actionO_Line > div {
-    text-align: center;
-    height: 100%;
-    position: relative;
-    width: 20px;
+    top: 0;
+    position: absolute;
+    width: 10px;
     background-color: black;
-    margin: 0 auto;
     z-index: 102;
 }
 
@@ -70,11 +50,29 @@
     position: relative;
 }
 
+#actionO_left,
+#actionO_right {
+    width: 50%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    z-index: 101;
+}
 
 #actionO_left {
     left: 0;
 }
 
+#actionO_left > .actionO_Line {
+    right: 0;
+}
+
 #actionO_right {
     right: 0;
+}
+
+#actionO_right > .actionO_Line {
+    left: 0;
 }
