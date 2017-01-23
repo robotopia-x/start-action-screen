@@ -1,26 +1,30 @@
 const html = require('choo/html')
-const doNothing = () => {}
+const doNothing = () => {
+}
 
 const viewHtml = (nameSpace) => {
   return (state, prev, send) => {
     return html`
     <div class="actionO_overlay" style="visibility: ${state[nameSpace].hidden ? 'hidden' : 'visible'}">
-        <div id="actionO_left" style="left: ${state[nameSpace].left.pos + '%'}">
+      <div id="actionO_left" style="left: ${state[nameSpace].left.pos + '%'}">
         <div class="actionO_Image" style="background-image: url(${state[nameSpace].left.img});"></div>
         <div class="actionO_Line"></div>
-</div>
-        <div class="actionO_VS" style="top: ${state[nameSpace].vs.pos + '%'}">
-            <div>
-                <div>
-                    <img src=${state[nameSpace].vs.img} width="${state[nameSpace].vs.scale}%" alt="VS"/>
-                </div>
-            </div>
+        <div class="actionO_Name">${state[nameSpace].left.name}</div>
+      </div>
+      
+      <div class="actionO_VS" style="top: ${state[nameSpace].vs.pos + '%'}">
+        <div>
+          <div>
+            <img src=${state[nameSpace].vs.img} width="${state[nameSpace].vs.scale}%" alt="VS"/>
+          </div>
         </div>
-        
-        <div id="actionO_right" style="right: ${state[nameSpace].right.pos + '%'}"">
-            <div class="actionO_Image" style="background-image: url(${state[nameSpace].right.img});"></div>
-            <div class="actionO_Line"></div>
-        </div>
+      </div>
+      
+      <div id="actionO_right" style="right: ${state[nameSpace].right.pos + '%'}"">
+        <div class="actionO_Image" style="background-image: url(${state[nameSpace].right.img});"></div>
+        <div class="actionO_Line"></div>
+        <div class="actionO_Name">${state[nameSpace].right.name}</div>
+      </div>
     </div>
     `
   }
@@ -66,10 +70,12 @@ const model = (nameSpace) => {
     },
 
     reducers: {
-      _setVisibility: (state, visible) => {state.hidden = !visible},
-      setLeft: ( state, { img, name } ) => setSide( state, 'LEFT', img, name),
-      setRight: ( state, { img, name } ) => setSide( state, 'RIGHT', img, name),
-      setVS: ( state, { img } ) => {
+      _setVisibility: (state, visible) => {
+        state.hidden = !visible
+      },
+      setLeft: (state, {img, name}) => setSide(state, 'LEFT', img, name),
+      setRight: (state, {img, name}) => setSide(state, 'RIGHT', img, name),
+      setVS: (state, {img}) => {
         state.vs.img = img
         return state
       },
@@ -80,7 +86,7 @@ const model = (nameSpace) => {
     effects: {
       start: start,
       dismiss: dismiss,
-      setDurations: ( state, {up, down, stay}, send, done) => {
+      setDurations: (state, {up, down, stay}, send, done) => {
         if (up > 0) DURATION_BUILDUP = up
         if (down > 0) DURATION_SLIDEOUT = down
         if (stay >= 0) DURATION_UPTIME = stay
@@ -102,14 +108,14 @@ const model = (nameSpace) => {
     return state
   }
 
-  function update( {left, right, vs}, data, send, done) {
+  function update({left, right, vs}, data, send, done) {
     timeElapsed += timePerUpdate
     let pL = left.pos
     let pR = right.pos
     let pM = vs.pos
 
     if (timeElapsed < DURATION_BUILDUP) {
-      return animIn( pL, pR, pM, send)
+      return animIn(pL, pR, pM, send)
     }
 
     if (timeElapsed < DURATION_BUILDUP + DURATION_UPTIME) {
@@ -118,7 +124,7 @@ const model = (nameSpace) => {
 
     if (timeElapsed < DURATION_BUILDUP + DURATION_UPTIME + DURATION_SLIDEOUT) {
       smallify(vs.scale, send)
-      return slideOut( pL, pR, pM, send)
+      return slideOut(pL, pR, pM, send)
     }
 
     send(nameSpace + ':dismiss', null, doNothing)
@@ -184,7 +190,7 @@ const model = (nameSpace) => {
 module.exports = (nameSpace) => {
   return {
     model: model(nameSpace),
-    view:  viewHtml(nameSpace)
+    view: viewHtml(nameSpace)
   }
 }
 

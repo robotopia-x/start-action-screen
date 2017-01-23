@@ -8,6 +8,19 @@
     z-index: 100;
 }
 
+.actionO_Name {
+    font-size: 200px;
+    font-weight: 500;
+    position: relative;
+    z-index: 104;
+    margin: 0 auto;
+    color: white;
+    overflow: hidden;
+    max-width: 100%;
+    display: block;
+    text-align: center;
+}
+
 .actionO_VS {
     height: 100%;
     width: 100%;
