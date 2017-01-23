@@ -3,14 +3,16 @@
 [![built with choo v4](https://img.shields.io/badge/built%20with%20choo-v4-ffc3e4.svg?style=flat-square)](https://github.com/yoshuawuyts/choo)
 
 Adds a Mortal-Combat-like Intro  
+
 slide in | left first | show | animate out
 --- | --- | --- | ---
-![Slides In][Slide-In] | ![Left Side is done][Left-Done] | ![Fully present][Stay] | ![Animates Out][Out Animation]
+![Slide] | ![Left] | ![Stay] | ![Out]
 
-[Slide-In]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/leftSlide.png ""
-[Left-Done]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/left.png ""
-[Stay]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/stay.png ""
-[Out Animation]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/out.png
+
+[Slide]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/leftSlide.png "Slides In"
+[Left]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/left.png "Left Side is done"
+[Stay]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/stay.png "Fully present"
+[Out]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/out.png "Animates Out"
 
 # Useage
 
