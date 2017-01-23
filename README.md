@@ -8,11 +8,17 @@ slide in | left first | show | animate out
 --- | --- | --- | ---
 ![Slide] | ![Left] | ![Stay] | ![Out]
 
-
 [Slide]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/leftSlide.png "Slides In"
 [Left]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/left.png "Left Side is done"
 [Stay]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/stay.png "Fully present"
 [Out]: https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/out.png "Animates Out"
+
+# Customize
+* Images
+* Speed
+* Colors
+* Names (of course)
+* Font
 
 # Useage
 
@@ -62,7 +68,7 @@ someHtmlView = (state, prev, send) => {
 }
 ```
 
-To adjust styles to your liking (for example the Player names) take a look at the style.css
+To adjust styles to your liking (for example the Player names) take a look at the [style.css](style.css)
 
 # Demo
 ```bash
