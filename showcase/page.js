@@ -16,10 +16,14 @@ module.exports = (state, prev, send) => {
     send( namespace + ':setDurations', {up: 1000, down: 1000, stay: 1000})
   }
 
+  const demoButton = html`
+    <button onclick=${start} style="margin: 10% auto; font-size: 300px; position: relative; display: block">Demo</button>
+    `
+
 
   return html`
   <div style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh">
-  <button onclick=${start}>Demo</button>
+  ${demoButton}
   ${overlayHtml}
 </div>
   `

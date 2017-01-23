@@ -152,7 +152,7 @@ const model = (nameSpace) => {
 
   function smallify(vsScale, send) {
     const speed = (timePerUpdate / 25) * (DEF_DURATION_SLIDEOUT / DURATION_SLIDEOUT)
-    vsScale -= speed * 10
+    vsScale -= speed * 5
     if (vsScale < 0) vsScale = 0
     send(nameSpace + ':updateSizes', {vs: vsScale}, doNothing)
   }
