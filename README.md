@@ -31,8 +31,8 @@ someHtmlView = (state, prev, send) => {
   if (!initialized) {
     initialized = true
     //Customize by setting some names and images
-    send( someModuleName + ':setLeft', {img: 'img/left.png', name: 'left'})
-    send( someModuleName + ':setRight', {img: 'img/right.png', name: 'right'})
+    send( someModuleName + ':setLeft', {img: 'http://maxpixel.freegreatpicture.com/static/photo/1x/Tarepanda-Panda-Cat-1390340.png', name: 'left'})
+    send( someModuleName + ':setRight', {img: 'https://cdn.pixabay.com/photo/2013/07/12/18/20/cat-153308_960_720.png', name: 'right'})
     send( someModuleName + ':setVS', {img: 'http://vignette2.wikia.nocookie.net/mortalkombat/images/6/64/Vs.png/revision/latest?cb=20150319161124&path-prefix=de'})
     //up will be the time taken to build up
     //down will be the time for all the elements to disappear

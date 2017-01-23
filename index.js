@@ -49,17 +49,17 @@ const model = (nameSpace) => {
     state: {
       hidden: true,
       left: {
-        img: 'img/left.png',
+        img: '',
         name: 'Player 1',
         pos: 0
       },
       right: {
-        img: 'img/right.png',
+        img: '',
         name: 'Player 2',
         pos: 0
       },
       vs: {
-        img: 'img/lightning.png',
+        img: '',
         pos: 0,
         scale: 100
       }
