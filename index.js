@@ -28,7 +28,7 @@ const viewHtml = (nameSpace) => {
 
 const model = (nameSpace) => {
 
-  let DURATION_UP = 250000
+  let DURATION_UP = 2500
   let DURATION_FADEOUT = 200
   let updateInterval
   let timeElapsed = 0
