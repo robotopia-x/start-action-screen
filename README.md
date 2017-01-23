@@ -3,7 +3,7 @@
 [![built with choo v4](https://img.shields.io/badge/built%20with%20choo-v4-ffc3e4.svg?style=flat-square)](https://github.com/yoshuawuyts/choo)
 
 Adds a Mortal-Combat-like Intro  
-![Built](./stay.png)
+![Impression](https://raw.githubusercontent.com/wiki/robotopia-x/start_action_screen/stay.png)
 
 # Useage
 
