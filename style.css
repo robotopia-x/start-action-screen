@@ -9,16 +9,6 @@
     z-index: 100;
 }
 
-.actionO_Line {
-    height: 100%;
-    overflow: hidden;
-    top: 0;
-    position: absolute;
-    width: 10px;
-    background-color: black;
-    z-index: 102;
-}
-
 .actionO_VS {
     height: 100%;
     width: 100%;
@@ -50,29 +40,62 @@
     position: relative;
 }
 
+.actionO_Image {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 102;
+}
+
+.actionO_Line {
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    position: absolute;
+    width: 10px;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 101;
+}
+
 #actionO_left,
 #actionO_right {
     width: 50%;
     height: 100%;
-    background-repeat: no-repeat;
-    background-size: contain;
     position: absolute;
     top: 0;
-    z-index: 101;
+    overflow: hidden;
 }
 
 #actionO_left {
+    background-color: rgba(255,0,0,0.2);
     left: 0;
 }
 
 #actionO_left > .actionO_Line {
-    right: 0;
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(255,0,0,1), rgba(0,0,0,0)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(left, rgba(0,0,0,0), rgba(255,0,0,1), rgba(0,0,0,0)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(255,0,0,1), rgba(0,0,0,0)); /*Fx 3.6-15*/
+    background: linear-gradient(to left, rgba(0,0,0,0), rgba(255,0,0,1), rgba(0,0,0,0)); /*Standard*/
+    width: 50%;
+    right: -15%;
 }
 
 #actionO_right {
+    background-color: rgba(0,0,255,0.2);
     right: 0;
 }
 
 #actionO_right > .actionO_Line {
-    left: 0;
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,255,1), rgba(0,0,0,0)); /*Safari 5.1-6*/
+    background: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,255,1), rgba(0,0,0,0)); /*Opera 11.1-12*/
+    background: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,255,1), rgba(0,0,0,0)); /*Fx 3.6-15*/
+    background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,255,1), rgba(0,0,0,0)); /*Standard*/
+    width: 50%;
+    left: -15%;
 }

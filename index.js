@@ -5,7 +5,8 @@ const viewHtml = (nameSpace) => {
   return (state, prev, send) => {
     return html`
     <div class="actionO_overlay" style="visibility: ${state[nameSpace].hidden ? 'hidden' : 'visible'}">
-        <div id="actionO_left" style="background-image: url(${state[nameSpace].left.img}); left: ${state[nameSpace].left.pos + '%'}">
+        <div id="actionO_left" style="left: ${state[nameSpace].left.pos + '%'}">
+        <div class="actionO_Image" style="background-image: url(${state[nameSpace].left.img});"></div>
         <div class="actionO_Line"></div>
 </div>
         <div class="actionO_VS" style="top: ${state[nameSpace].vs.pos + '%'}">
@@ -16,7 +17,8 @@ const viewHtml = (nameSpace) => {
             </div>
         </div>
         
-        <div id="actionO_right" style="background-image: url(${state[nameSpace].right.img});  right: ${state[nameSpace].right.pos + '%'}"">
+        <div id="actionO_right" style="right: ${state[nameSpace].right.pos + '%'}"">
+            <div class="actionO_Image" style="background-image: url(${state[nameSpace].right.img});"></div>
             <div class="actionO_Line"></div>
         </div>
     </div>
@@ -26,7 +28,7 @@ const viewHtml = (nameSpace) => {
 
 const model = (nameSpace) => {
 
-  let DURATION_UP = 2500
+  let DURATION_UP = 250000
   let DURATION_FADEOUT = 200
   let updateInterval
   let timeElapsed = 0
