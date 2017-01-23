@@ -5,5 +5,76 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    background-color: #3a33d1;
+    background-color: #b4b4b4;
+    z-index: 100;
+}
+
+#actionO_left,
+#actionO_right {
+    width: 50%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    z-index: 101;
+}
+
+.actionO_Line {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 102;
+    overflow: hidden;
+}
+
+.actionO_Line > div {
+    text-align: center;
+    height: 100%;
+    position: relative;
+    width: 20px;
+    background-color: black;
+    margin: 0 auto;
+    z-index: 102;
+}
+
+.actionO_VS {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 103;
+    overflow: hidden;
+}
+
+.actionO_VS > div > div {
+    display: table-cell;
+    position: relative;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.actionO_VS > div > div > div {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.actionO_VS > div{
+    display: table;
+    width: 25%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+#actionO_left {
+    left: 0;
+}
+
+#actionO_right {
+    right: 0;
 }
