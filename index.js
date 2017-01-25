@@ -3,7 +3,6 @@ const viewHtml = require('./view')
 const doNothing = () => {}
 
 const model = (nameSpace) => {
-
   const DEF_DURATION_BUILDUP = 1500
   const DEF_DURATION_UPTIME = 1000
   const DEF_DURATION_SLIDEOUT = 1000
@@ -68,19 +67,19 @@ const model = (nameSpace) => {
     }
   }
 
-  function updatePositions(state, data) {
+  function updatePositions (state, data) {
     if (data.hasOwnProperty('left')) state.left.pos = data.left
     if (data.hasOwnProperty('right')) state.right.pos = data.right
     if (data.hasOwnProperty('vs')) state.vs.pos = data.vs
     return state
   }
 
-  function updateSizes(state, data) {
+  function updateSizes (state, data) {
     if (data.hasOwnProperty('vs')) state.vs.scale = data.vs
     return state
   }
 
-  function update({left, right, vs}, data, send, done) {
+  function update ({left, right, vs}, data, send, done) {
     timeElapsed += timePerUpdate
     let pL = left.pos
     let pR = right.pos
@@ -102,7 +101,7 @@ const model = (nameSpace) => {
     send(nameSpace + ':dismiss', null, doNothing)
   }
 
-  function start(state, data, send, done) {
+  function start (state, data, send, done) {
     timeElapsed = 0
     send(nameSpace + ':_setVisibility', true, doNothing)
     updateInterval = setInterval(() => {
@@ -113,7 +112,7 @@ const model = (nameSpace) => {
     done()
   }
 
-  function dismiss(state, data, send, done) {
+  function dismiss (state, data, send, done) {
     send(nameSpace + ':_setVisibility', false, doNothing)
     if (updateInterval) {
       clearInterval(updateInterval)
@@ -121,18 +120,18 @@ const model = (nameSpace) => {
     done()
   }
 
-  function setSide(state, side, img, name) {
+  function setSide (state, side, img, name) {
     if (side === 'LEFT') {
-      state.left.img = img;
-      state.left.name = name;
+      state.left.img = img
+      state.left.name = name
     }
     if (side === 'RIGHT') {
-      state.right.img = img;
-      state.right.name = name;
+      state.right.img = img
+      state.right.name = name
     }
   }
 
-  function animIn(pL, pR, pM, send) {
+  function animIn (pL, pR, pM, send) {
     const speed = (timePerUpdate / 25) * (DEF_DURATION_BUILDUP / DURATION_BUILDUP)
     pL += speed * 15
     pR += speed * 15
@@ -143,20 +142,19 @@ const model = (nameSpace) => {
     send(nameSpace + ':updatePositions', {left: pL, right: pR, vs: pM}, doNothing)
   }
 
-  function slideOut(pL, pR, pM, send) {
+  function slideOut (pL, pR, pM, send) {
     const speed = (timePerUpdate / 25) * (DEF_DURATION_SLIDEOUT / DURATION_SLIDEOUT)
     pL -= speed * 2
     pR -= speed * 2
     send(nameSpace + ':updatePositions', {left: pL, right: pR}, doNothing)
   }
 
-  function smallify(vsScale, send) {
+  function smallify (vsScale, send) {
     const speed = (timePerUpdate / 25) * (DEF_DURATION_SLIDEOUT / DURATION_SLIDEOUT)
     vsScale -= speed * 5
     if (vsScale < 0) vsScale = 0
     send(nameSpace + ':updateSizes', {vs: vsScale}, doNothing)
   }
-
 }
 
 module.exports = (nameSpace) => {

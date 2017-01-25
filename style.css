@@ -58,6 +58,14 @@
 
 /* internal CSS. You can overwrite it, but no one knows what might happen. */
 
+#actionO_left > .actionO_Image > img {
+    float: left;
+}
+
+#actionO_right > .actionO_Image > img {
+    float: right;
+}
+
 .actionO_VS {
     height: 100%;
     width: 100%;
@@ -98,6 +106,10 @@
     width: 100%;
     height: 100%;
     z-index: 102;
+}
+
+.actionO_Image > img {
+    width: 100%;
 }
 
 .actionO_Line {
