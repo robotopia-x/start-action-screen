@@ -122,12 +122,12 @@ const model = (nameSpace) => {
 
   function setSide (state, side, img, name) {
     if (side === 'LEFT') {
-      state.left.img = img
-      state.left.name = name
+      if (img) state.left.img = img
+      if (name) state.left.name = name
     }
     if (side === 'RIGHT') {
-      state.right.img = img
-      state.right.name = name
+      if (img) state.right.img = img
+      if (name) state.right.name = name
     }
   }
 
